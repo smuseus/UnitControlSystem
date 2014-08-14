@@ -2,9 +2,11 @@ class UnitHandler {
   
   ArrayList<Unit> units;
   Unit selected;
-  
+    
+
   UnitHandler() {
     units = new ArrayList<Unit>();
+
   }
   
   void draw() {
@@ -14,7 +16,7 @@ class UnitHandler {
   }
   
   void addUnit() {
-    units.add(new Unit(map.getLocation(mouseX, mouseY)));
+      units.add(new Unit(map.getLocation(mouseX,mouseY))); 
   }
   
   void removeUnit(Unit u) {
@@ -25,11 +27,11 @@ class UnitHandler {
 }
 
 class Unit {
-  
+   
   Apperance apperance;
   
   String id;
-  boolean[] solenoid = { false, false, false, false, false };
+  boolean[] solenoid = { true, false, false, false, false };
   float dimmer;
   int midiChannel;
   
@@ -39,11 +41,11 @@ class Unit {
   char[] keySet = {'2','3','e','w','q'};
   
   Unit(Location gps) {
-    id = "666";
-    dimmer = 1.0;
+    id = "666"; 
     apperance = new Apperance(this);
     this.gps = gps;
-    orientation = 0; // Offset form north in radiants. minus to left, plus to right.   
+    orientation = 0; // Offset form north in radiants. minus to left, plus to right.  
+    
   }
   
   void draw() {
@@ -55,7 +57,7 @@ class Apperance {
   
   Unit u;
   ScreenPosition screen;
-  PImage soundfield = loadImage("data/soundfield.png");;
+  PImage soundfield = loadImage("data/soundfield.png");
   
   Apperance(Unit u) {
     this.u = u;
@@ -111,8 +113,5 @@ class Apperance {
       imageMode(CORNER);
     popMatrix();
   }
-}
-
-class Communication {
 }
 

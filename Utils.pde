@@ -8,3 +8,14 @@ PVector pentaside(int i, float r, float o) {
                       sin( TWO_PI/5 * (i+0.5) + o - HALF_PI ) * r );
 }
 
+
+IntList digits(int i) {
+    IntList digits = new IntList();
+    while(i > 0) {
+        
+        digits.append(i % 10 );
+        i /= 10;
+    }
+    return digits;
+}
+
