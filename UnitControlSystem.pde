@@ -77,7 +77,6 @@ Comm comm;
 
 
 void setup() {
-
   size(800,600);
   map = new UnfoldingMap(this, new Microsoft.AerialProvider());
   map.zoomAndPanTo(new Location(52.5f, 13.4f), 100);
@@ -89,8 +88,6 @@ void setup() {
 
 
 }
-
-
 
 
 void draw() {
