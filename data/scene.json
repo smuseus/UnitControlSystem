@@ -1,0 +1,77 @@
+[
+  {
+    "id": "Default",
+    "orientation": 1.0799999237060547,
+    "lon": 13.397719383239746,
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "keySet": [
+      "2",
+      "3",
+      "e",
+      "w",
+      "q"
+    ],
+    "midiChannel": 0,
+    "lat": 52.50022506713867
+  },
+  {
+    "id": "Default",
+    "orientation": -1.359999656677246,
+    "lon": 13.399221420288086,
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "keySet": [
+      "2",
+      "3",
+      "e",
+      "w",
+      "q"
+    ],
+    "midiChannel": 0,
+    "lat": 52.50116729736328
+  },
+  {
+    "id": "Default",
+    "orientation": 0,
+    "lon": 13.397162437438965,
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "keySet": [
+      "2",
+      "3",
+      "e",
+      "w",
+      "q"
+    ],
+    "midiChannel": 0,
+    "lat": 52.501251220703125
+  },
+  {
+    "id": "Default",
+    "orientation": -0.6799999475479126,
+    "lon": 13.398642539978027,
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "keySet": [
+      "2",
+      "3",
+      "e",
+      "w",
+      "q"
+    ],
+    "midiChannel": 0,
+    "lat": 52.50056838989258
+  },
+  {
+    "id": "Default",
+    "orientation": 0.6999999284744263,
+    "lon": 13.397806167602539,
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "keySet": [
+      "2",
+      "3",
+      "e",
+      "w",
+      "q"
+    ],
+    "midiChannel": 0,
+    "lat": 52.50094985961914
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "Default",
+    "address": "0, 13, a2, 0, 40, 9e, ec, cd",
+    "lat": 52.5,
+    "lon": 13.4,
+    "orientation": 0,
+    "keySet": [
+      "2",
+      "3",
+      "q",
+      "w",
+      "e"
+    ],
+    "midiChannel": 123,
+  }
+]
