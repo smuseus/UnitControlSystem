@@ -170,7 +170,7 @@ public class UserInput {
 	void keyAction() {
 		for (Unit u : p.handler.units) {
 			for (int i = 0; i < u.keySet.length; i++) {
-				if (p.key == u.keySet[i]) u.solenoidInstr[i] = !u.solenoidInstr[i];
+				if (p.key == u.keySet[i]) u.solenoidState[i] = !u.solenoidState[i]; // TODO: Change back to solenoidIntr, this is temporary for the sake 
 			}
 		}
 	}
@@ -185,10 +185,9 @@ public class UserInput {
 	void mapActive(boolean b) {
 		if (b) {
 			mapEvent.register(p.map, PanMapEvent.TYPE_PAN, p.map.getId());
-			mapEvent.register(p.map, ZoomMapEvent.TYPE_ZOOM, p.map.getId());
 		} else {
 			mapEvent.unregister(p.map, PanMapEvent.TYPE_PAN, p.map.getId());
-			mapEvent.unregister(p.map, ZoomMapEvent.TYPE_ZOOM, p.map.getId());
+			mapEvent.unregister(p.map, ZoomMapEvent.TYPE_ZOOM, p.map.getId()); // TODO: Make this happen eariler.
 		}
 	}
 

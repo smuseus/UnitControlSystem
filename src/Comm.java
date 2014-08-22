@@ -31,7 +31,7 @@ public class Comm {
 		ZNetTxRequest request = new ZNetTxRequest(addrs[0], payload);
 
 		try {
-			xbee.open(COMPORT, 115200);
+			xbee.open(COMPORT, 9600);
 			p.println("zb request is " + request.getXBeePacket().getPacket());
 			p.println("sending tx " + request);
 			ZNetTxStatusResponse response = (ZNetTxStatusResponse) xbee

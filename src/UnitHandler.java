@@ -1,5 +1,21 @@
 import java.util.ArrayList;
 
+/*
+ * Unit 
+ * 
+ * Coordinator 
+ * 	64-bit Address: 13 A2 00 40 B0 E8 FF
+ * 
+ * Unit A
+ * 	64-bit Address: 
+ * 
+ * Unit B
+ * Unit C
+ * Unit D
+ * Unit E
+ *
+ * 
+ */
 
 public class UnitHandler {
 	  UnitControlSystem p;

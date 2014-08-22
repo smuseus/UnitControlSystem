@@ -13,7 +13,7 @@ public class UnitControlSystem extends PApplet {
 	public FileHandler file;
 
 	public void setup() {
-		size(600, 600);
+		size(1280, 1024);
 		map = setupMap();		
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
@@ -47,7 +47,7 @@ public class UnitControlSystem extends PApplet {
 	
 	UnfoldingMap setupMap() {
 		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());
-		m.zoomAndPanTo(new Location(52.5f, 13.4f), 100);
+		m.zoomAndPanTo(new Location(52.4943f, 13.420799f), 100);
 		return m;
 	}
 
