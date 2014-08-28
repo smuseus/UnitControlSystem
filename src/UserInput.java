@@ -169,9 +169,12 @@ public class UserInput {
 
 	void keyAction() {
 		for (Unit u : p.handler.units) {
-			for (int i = 0; i < u.keySet.length; i++) {
+			for (int i = 0; i < u.keySet.length-1; i++) { // -1 one because the last char in the array defines the dimmer on/off key.
 				if (p.key == u.keySet[i]) {
 					u.solenoidInstr[i] = !u.solenoidInstr[i]; // TODO: Change back to solenoidIntr, this is temporary for the sake
+				} else 
+				if (p.key == u.keySet[5]) {
+					u.dimmerInstr = !u.dimmerInstr;
 				}
 			}
 		}

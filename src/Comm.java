@@ -130,9 +130,9 @@ public class Comm {
 		return payload;
 	}
 
-	int[] dimm(int value) { // still a bit mysterious hardware/zerocross code
+	int[] dimm(boolean value) { // still a bit mysterious hardware/zerocross code
 
-		dig = digits(value);
+		dig = digits((value) ? 1 : 0);
 
 		for (int u = dig.size(); u > 0; u--) {
 			payload[dig.size() - u] = 48 + dig.get(u - 1);
@@ -145,7 +145,6 @@ public class Comm {
 		dig.clear();
 
 		return payload;
-
 	}
 
 	IntList digits(int i) {

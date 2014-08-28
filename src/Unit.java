@@ -11,13 +11,13 @@ public class Unit {
 	  Location gps;
 	  float orientation;
 	  
-	  char[] keySet = {'2','3','e','w','q'};
+	  char[] keySet = {'2','3','e','w','q','0'};
 	  int midiID; // 40 + unit # * 10, ex. unit 22 = 40 + 2 * 10 = 60;
 
 	  boolean[] solenoidState = { false, false, false, false, false };
 	  boolean[] solenoidInstr = { false, false, false, false, false };
-	  int dimmerState = 0; // TODO: Needs to match the datatype of the comm.dimm method.
-	  int dimmerInstr = 0;
+	  boolean dimmerState = false; // TODO: Needs to match the datatype of the comm.dimm method.
+	  boolean dimmerInstr = false;
 
 	  Unit(Location location, UnitControlSystem parent) {
 		p = parent;

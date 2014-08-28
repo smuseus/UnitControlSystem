@@ -32,7 +32,7 @@ public class MidiIO {
 	
 	public void sendDimmer(Unit u) {
 		// TODO: get dimmer to right type (boolean?).
-		if(u.dimmerState == 666)  { 
+		if(u.dimmerState == false)  { 
 			midibus.sendNoteOn(channel, u.midiID, velocity );
 		} else {
 			midibus.sendNoteOff(channel, u.midiID, velocity );

@@ -83,7 +83,9 @@ public class UnitHandler {
 	  
 	  void solenoidDebug() {
 		  for(Unit u : units) {
-			//  p.comm.send(u.address, p.comm.updown(sol, state))
+			  if(u.id.equals("R22")) {
+				  u.dimmerInstr = !u.dimmerInstr;
+			  }
 		  }
 	  }
 }
