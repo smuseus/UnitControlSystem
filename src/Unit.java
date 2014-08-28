@@ -12,12 +12,12 @@ public class Unit {
 	  float orientation;
 	  
 	  char[] keySet = {'2','3','e','w','q'};
-	  int midiChannel;
+	  int midiID; // 40 + unit # * 10, ex. unit 22 = 40 + 2 * 10 = 60;
 
 	  boolean[] solenoidState = { false, false, false, false, false };
 	  boolean[] solenoidInstr = { false, false, false, false, false };
-	  int dimmerState = 1; // TODO: Needs to match the datatype of the comm.dimm method.
-	  int dimmerInstr = 1;
+	  int dimmerState = 0; // TODO: Needs to match the datatype of the comm.dimm method.
+	  int dimmerInstr = 0;
 
 	  Unit(Location location, UnitControlSystem parent) {
 		p = parent;

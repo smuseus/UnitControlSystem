@@ -55,7 +55,7 @@ public class FileHandler {
 		for(int i=0; i<keySetString.length; i++) u.keySet[i] =  keySetString[i].charAt(0);
 		
 		// Load midi
-		u.midiChannel = json.getInt("midiChannel");
+		u.midiID = json.getInt("midiID"); 
 		
 		return u;
 	}
@@ -89,7 +89,7 @@ public class FileHandler {
 		json.setJSONArray("keySet", keySet);
 		
 		// Store midi
-		json.setInt("midiChannel", u.midiChannel);
+		json.setInt("midiID", u.midiID);
 		
 		return json;
 	}

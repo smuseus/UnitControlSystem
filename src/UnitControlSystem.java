@@ -1,4 +1,8 @@
+
+import javax.sound.midi.MidiMessage;
+
 import processing.core.*;
+import themidibus.*;
 import de.fhpotsdam.unfolding.*;
 import de.fhpotsdam.unfolding.geo.*;
 import de.fhpotsdam.unfolding.providers.*;
@@ -11,21 +15,27 @@ public class UnitControlSystem extends PApplet {
 	public UserInput user;
 	public Comm comm;
 	public FileHandler file;
+	public MidiIO midi;
+	public MidiBus midibus;
 
 	public void setup() {
-		size(1280, 1024);
+		size(600, 1024);
 		map = setupMap();		
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
-		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
+		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
+		midibus = new MidiBus(this, "Abelton", "Eclipse");
+		midi = new MidiIO(this, midibus);
 	}
 
 	public void draw() {
-		//handler.sync(); // Wait with xbee, still needs to be debugged. 
+		handler.sync(); // Wait with xbee, still needs to be debugged. 
 		map.draw();
 		handler.draw();
 		user.draw();
+		
+
 	}
 	
 	public void mousePressed() {
@@ -43,7 +53,10 @@ public class UnitControlSystem extends PApplet {
 	public void keyPressed() {
 		user.keyPressed();
 	}
-
+	
+	public void midiMessage(MidiMessage message) { // You can also use midiMessage(MidiMessage message, long timestamp, String bus_name)
+		midi.midiMessage(message);
+	}
 	
 	UnfoldingMap setupMap() {
 		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());

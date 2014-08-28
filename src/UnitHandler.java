@@ -62,7 +62,8 @@ public class UnitHandler {
 				  if(u.solenoidState[i] != u.solenoidInstr[i]) {
 					  if(p.comm.send(u.address, p.comm.updown(i, u.solenoidInstr[i]))) {
 						  u.solenoidState[i] = u.solenoidInstr[i];
-						  p.println("Solenoid state update successfull");
+						  p.println("Solenoid #" + i+ " state update successfull");
+						  p.midi.sendSolenoid(u, i);
 					  } else {
 						  p.println("Solenoid state not updated.");
 					  }
@@ -71,11 +72,18 @@ public class UnitHandler {
 					  if(p.comm.send(u.address, p.comm.dimm(u.dimmerInstr))) {
 						  u.dimmerState = u.dimmerInstr;
 						  p.println("Dimmer state update successfull");
+						  p.midi.sendDimmer(u); // TODO: Fix such that it matches dimmer.
 					  } else {
 						  p.println("Dimmer state not updated.");
 					  }
 				  }
 			  }
+		  }
+	  }
+	  
+	  void solenoidDebug() {
+		  for(Unit u : units) {
+			//  p.comm.send(u.address, p.comm.updown(sol, state))
 		  }
 	  }
 }

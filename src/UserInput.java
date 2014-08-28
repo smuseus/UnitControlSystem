@@ -170,7 +170,9 @@ public class UserInput {
 	void keyAction() {
 		for (Unit u : p.handler.units) {
 			for (int i = 0; i < u.keySet.length; i++) {
-				if (p.key == u.keySet[i]) u.solenoidState[i] = !u.solenoidState[i]; // TODO: Change back to solenoidIntr, this is temporary for the sake 
+				if (p.key == u.keySet[i]) {
+					u.solenoidInstr[i] = !u.solenoidInstr[i]; // TODO: Change back to solenoidIntr, this is temporary for the sake
+				}
 			}
 		}
 	}
