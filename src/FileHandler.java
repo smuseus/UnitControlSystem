@@ -83,7 +83,7 @@ public class FileHandler {
 		
 		// Store key set
 		JSONArray keySet = new JSONArray();
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<6; i++) {
 			keySet.setString(i, "" + u.keySet[i]);
 		}
 		json.setJSONArray("keySet", keySet);

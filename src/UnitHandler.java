@@ -1,22 +1,5 @@
 import java.util.ArrayList;
 
-/*
- * Unit 
- * 
- * Coordinator 
- * 	64-bit Address: 13 A2 00 40 B0 E8 FF
- * 
- * Unit A
- * 	64-bit Address: 
- * 
- * Unit B
- * Unit C
- * Unit D
- * Unit E
- *
- * 
- */
-
 public class UnitHandler {
 	  UnitControlSystem p;
 	  
@@ -65,6 +48,7 @@ public class UnitHandler {
 						  p.println("Solenoid #" + i+ " state update successfull");
 						  p.midi.sendSolenoid(u, i);
 					  } else {
+						  u.solenoidInstr[i] = !u.solenoidInstr[i];
 						  p.println("Solenoid state not updated.");
 					  }
 				  }
@@ -74,6 +58,7 @@ public class UnitHandler {
 						  p.println("Dimmer state update successfull");
 						  p.midi.sendDimmer(u); // TODO: Fix such that it matches dimmer.
 					  } else {
+						  //u.dimmerInstr = !u.dimmerInstr;
 						  p.println("Dimmer state not updated.");
 					  }
 				  }
