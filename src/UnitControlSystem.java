@@ -1,3 +1,16 @@
+/*
+ * TODO:
+ * 
+ *  Graphics : blower on/off identifier.
+ *  		 : invert whistle on / off.
+ *  		 : change graphics, make more visible.
+ * 	
+ *  On blower off : close all.
+ *  On blower on : check all close, close all.
+ * 
+ * 	Add start up function : send all command five times, end with all off, all down.
+ * 
+ */
 
 import javax.sound.midi.MidiMessage;
 
@@ -60,7 +73,7 @@ public class UnitControlSystem extends PApplet {
 	
 	UnfoldingMap setupMap() {
 		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());
-		m.zoomAndPanTo(new Location(52.4943f, 13.420799f), 100);
+		m.zoomAndPanTo(new Location(56.947633f, 24.085230f), 100);
 		return m;
 	}
 
