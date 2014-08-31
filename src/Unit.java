@@ -14,9 +14,9 @@ public class Unit {
 	  char[] keySet = {'2','3','e','w','q','0'};
 	  int midiID; // 40 + unit # * 10, ex. unit 22 = 40 + 2 * 10 = 60;
 
-	  boolean[] solenoidState = { false, false, false, false, false };
-	  boolean[] solenoidInstr = { false, false, false, false, false };
-	  boolean dimmerState = false; // TODO: Needs to match the datatype of the comm.dimm method.
+	  boolean[] solenoidState = { true, true, true, true, true }; // (State is reversed, false is on, true is off, due to reversed array on Arduino).
+	  boolean[] solenoidInstr = { true, true, true, true, true };
+	  boolean dimmerState = false;
 	  boolean dimmerInstr = false;
 
 	  Unit(Location location, UnitControlSystem parent) {

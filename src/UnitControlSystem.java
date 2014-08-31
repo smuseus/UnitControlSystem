@@ -1,9 +1,6 @@
 /*
  * TODO:
  * 
- *  Graphics : blower on/off identifier.
- *  		 : invert whistle on / off.
- *  		 : change graphics, make more visible.
  * 	
  *  On blower off : close all.
  *  On blower on : check all close, close all.
@@ -36,19 +33,17 @@ public class UnitControlSystem extends PApplet {
 		map = setupMap();		
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
-		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
+		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
 		midibus = new MidiBus(this, "Abelton", "Eclipse");
 		midi = new MidiIO(this, midibus);
 	}
 
 	public void draw() {
-		handler.sync(); // Wait with xbee, still needs to be debugged. 
+		//handler.sync(); // Wait with xbee, still needs to be debugged. 
 		map.draw();
 		handler.draw();
 		user.draw();
-		
-
 	}
 	
 	public void mousePressed() {
@@ -73,7 +68,7 @@ public class UnitControlSystem extends PApplet {
 	
 	UnfoldingMap setupMap() {
 		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());
-		m.zoomAndPanTo(new Location(56.947633f, 24.085230f), 100);
+		m.zoomAndPanTo(new Location(56.947633f, 24.085230f), 17);
 		return m;
 	}
 

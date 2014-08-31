@@ -58,7 +58,7 @@ public class UnitHandler {
 						  p.println("Dimmer state update successfull");
 						  p.midi.sendDimmer(u); // TODO: Fix such that it matches dimmer.
 					  } else {
-						  //u.dimmerInstr = !u.dimmerInstr;
+						  //u.dimmerInstr = !u.dimmerInstr; // TODO: Fix this with working unit.
 						  p.println("Dimmer state not updated.");
 					  }
 				  }

@@ -171,10 +171,10 @@ public class UserInput {
 		for (Unit u : p.handler.units) {
 			for (int i = 0; i < u.keySet.length-1; i++) { // -1 one because the last char in the array defines the dimmer on/off key.
 				if (p.key == u.keySet[i]) {
-					u.solenoidInstr[i] = !u.solenoidInstr[i]; // TODO: Change back to solenoidIntr, this is temporary for the sake
+					u.solenoidState[i] = !u.solenoidState[i]; // TODO: Change back to solenoidIntr, 
 				} else 
 				if (p.key == u.keySet[5]) {
-					u.dimmerInstr = !u.dimmerInstr;
+					u.dimmerState = !u.dimmerState;	// TODO: Change back to dimmerState, 
 				}
 			}
 		}

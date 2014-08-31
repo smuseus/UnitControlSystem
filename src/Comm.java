@@ -130,7 +130,7 @@ public class Comm {
 		return payload;
 	}
 
-	int[] dimm(boolean value) { // still a bit mysterious hardware/zerocross code
+	int[] dimm(boolean value) { // Zero cross is out, now just sending boolean, 0 for off, n < 0 for on.
 
 		dig = digits((value) ? 1 : 0);
 
