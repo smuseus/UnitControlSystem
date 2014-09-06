@@ -11,7 +11,8 @@ public class Comm {
 
 	UnitControlSystem p;
 
-	String COMPORT = "/dev/tty.usbserial-AD02AHVC";
+	String COMPORT = "/dev/tty.usbserial-AD02AHVC"; // MAC
+	//String COMPORT = "/dev/tty/USB0"; // HANDY
 
 	XBee xbee = new XBee();
 

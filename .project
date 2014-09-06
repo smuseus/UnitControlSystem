@@ -3,6 +3,7 @@
 	<name>UnitControlSystemEclipse</name>
 	<comment></comment>
 	<projects>
+		<project>xbee-api-0.9-1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
