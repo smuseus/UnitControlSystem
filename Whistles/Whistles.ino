@@ -30,10 +30,10 @@ S s[5] = {
 //S s[5] = { S(A1,A0,5), S(8,9,4), S(A3,A2,10), S(11,12,6), S(A5,A4,3) };
 
 //UNIT 00
-//S s[5] = { S(A3,A2,10), S(8,9,4), S(A1,A0,5), S(A5,A4,3), S(11,12,6) };
+S s[5] = { S(A3,A2,10), S(8,9,4), S(A1,A0,5), S(A5,A4,3), S(11,12,6) };
 
 // UNIT 22
-S s[5] = { S(A3,A2,10), S(11,12,6), S(A5,A4,3), S(A1,A0,5), S(8,9,4) };
+//S s[5] = { S(A3,A2,10), S(11,12,6), S(A5,A4,3), S(A1,A0,5), S(8,9,4) };
 
 
 //dimming stuff
@@ -71,10 +71,10 @@ void setup()
   
   Serial.begin(9600); //Debug serial
 
-/*
+
   Serial1.begin(9600);
   xbee.begin(Serial1);
-*/
+
 }
 
 /*
@@ -94,15 +94,14 @@ void zero_crosss_int()
 
 void loop()
 {
-
+/*
  if(blower) {
-  if (millis() - ontime >= 600000){ 
+  if (millis() - ontime >= 600000) { 
     digitalWrite(AC_LOAD, LOW);
     blower = false;  
-    resttime = millis();
   }
  }
-  
+  */
   
  if (Serial.available()) { handleInput(Serial.read()); }                
   xbee.readPacket();

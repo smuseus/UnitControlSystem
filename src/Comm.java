@@ -11,8 +11,7 @@ public class Comm {
 
 	UnitControlSystem p;
 
-	String COMPORT = "/dev/tty.usbserial-AD02AHVC"; // MAC
-	//String COMPORT = "/dev/tty/USB0"; // HANDY
+	String COMPORT = "/dev/tty.usbserial-AD02AHVC";
 
 	XBee xbee = new XBee();
 
@@ -28,7 +27,6 @@ public class Comm {
 	Comm(UnitControlSystem parent) {
 		p = parent;
 		
-		// for (XBeeAddress64 address : addrs) {
 		ZNetTxRequest request = new ZNetTxRequest(addrs[0], payload);
 
 		try {
@@ -44,10 +42,6 @@ public class Comm {
 			System.exit(1);
 		}
 
-	}
-	
-	void sync() {
-	// Compare
 	}
 
 	boolean send(XBeeAddress64 to_whom, int[] payload) {

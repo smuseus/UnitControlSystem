@@ -21,8 +21,8 @@ static void handleInput (char c) {
     case 'b':
       if (value == 0){
         for (x = 0; x++; x<5){
-         s[x].up();  
-        } 
+        s[x].up();  
+      } 
       
         digitalWrite(AC_LOAD, LOW);
         blower = false;

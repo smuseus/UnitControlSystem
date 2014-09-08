@@ -27,10 +27,12 @@ public class UnitControlSystem extends PApplet {
 	public FileHandler file;
 	public MidiIO midi;
 	public MidiBus midibus;
+	
+	public boolean ONLINE_MAP = false;
 
 	public void setup() {
 		size(600, 1024);
-		map = setupMap();		
+		map = setupMap();
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
 		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
@@ -68,7 +70,8 @@ public class UnitControlSystem extends PApplet {
 	
 	UnfoldingMap setupMap() {
 		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());
-		m.zoomAndPanTo(new Location(60.16074696f, 24.923045f), 17);
+		//UnfoldingMap m = new UnfoldingMap(this);
+		m.zoomAndPanTo(new Location(60.16074696f, 24.923045f), 15);
 		return m;
 	}
 
@@ -84,6 +87,6 @@ public class UnitControlSystem extends PApplet {
 	}
 	
 	public static void main(String args[]) {
-		PApplet.main(new String[] { "--present", "default.UnitControlSystem" });
+		PApplet.main(new String[] { "UnitControlSystem" });
 	}
 }
