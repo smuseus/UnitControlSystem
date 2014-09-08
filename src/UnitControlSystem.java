@@ -32,7 +32,7 @@ public class UnitControlSystem extends PApplet {
 
 	public void setup() {
 		size(600, 1024);
-		map = setupMap();
+		map = new UnfoldingMap(this, new Microsoft.AerialProvider());
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
 		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
@@ -66,13 +66,6 @@ public class UnitControlSystem extends PApplet {
 	
 	public void midiMessage(MidiMessage message) { // You can also use midiMessage(MidiMessage message, long timestamp, String bus_name)
 		midi.midiMessage(message);
-	}
-	
-	UnfoldingMap setupMap() {
-		UnfoldingMap m = new UnfoldingMap(this, new Microsoft.AerialProvider());
-		//UnfoldingMap m = new UnfoldingMap(this);
-		m.zoomAndPanTo(new Location(60.16074696f, 24.923045f), 15);
-		return m;
 	}
 
 	PVector pentatip(int i, float r, float o) {

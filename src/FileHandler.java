@@ -12,19 +12,34 @@ public class FileHandler {
 	
 	public void load() {
 		p.handler.clear();
-		JSONArray json = p.loadJSONArray(filepath);
-		for(int i=0; i<json.size(); i++) {
-			p.handler.addUnit( JSONtoUnit(json.getJSONObject(i)) );
+		JSONObject json = p.loadJSONObject(filepath);
+		
+		// Load Units
+		JSONArray units = json.getJSONArray("units");
+		for(int i=0; i<units.size(); i++) {
+			p.handler.addUnit( JSONtoUnit(units.getJSONObject(i)) );
 		}
+		
+		// Load Map location
+		p.map.zoomAndPanTo(15, new Location(json.getFloat("centerlat"), json.getFloat("centerlon")));
+		
 	}
 	
 	public void save() {
-		JSONArray json = new JSONArray();
-		for(Unit u : p.handler.units) {
-			json.append(unitToJSON(u));	
-		}
+		JSONObject json = new JSONObject();
 		
-		p.saveJSONArray(json, filepath);
+		// Save Units
+		JSONArray units = new JSONArray();
+		for(Unit u : p.handler.units) {
+			units.append(unitToJSON(u));	
+		}
+		json.setJSONArray("units", units);
+		
+		// Save Map Location
+		json.setFloat("centerlon", p.map.getCenter().y);
+		json.setFloat("centerlat", p.map.getCenter().x);
+		
+		p.saveJSONObject(json, filepath);
 		p.println("Scene saved to: " + filepath);
 	}
 

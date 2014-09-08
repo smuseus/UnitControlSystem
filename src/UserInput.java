@@ -19,7 +19,7 @@ public class UserInput {
 
 	UserInput(UnitControlSystem parent) {
 		p = parent;
-		if(p.ONLINE_MAP) mapInit(p);
+		mapInit(p);
 	}
 
 	void mousePressed() {
