@@ -50,8 +50,10 @@ public class UnitHandler {
 						  u.clearSolenoidInstructions(i);
 					  }
 				  }
-				  if(u.blowerNeedsToBeUpdated()) {
-					  if(u.solenoidsAreClosed()) {
+			  }
+			  if(u.blowerNeedsToBeUpdated()) {
+				  if(u.solenoidsAreClosed()) {
+					  if(u.blowerDidItsOfftime()) {
 						  if(true) { // TODO: switch back
 	//					  if(p.comm.send(u.address, p.comm.dimm(u.dimmerInstr))) {
 							  u.updateBlower();
@@ -59,9 +61,15 @@ public class UnitHandler {
 							  u.clearBlowerInstructions();
 						  }
 					  } else {
-						  u.closeAllSolenoids();
+						  u.clearBlowerInstructions();
+						  p.println("Blower is still cooling");
 					  }
+				  } else {
+					  u.closeAllSolenoids();
 				  }
+			  }
+			  if(u.blowerOnTooLong()){
+				  u.turnOffBlower();
 			  }
 		  }
 	  }

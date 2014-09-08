@@ -19,8 +19,11 @@ public class Unit {
 	  boolean blowerState = false;
 	  boolean blowerInstr = false;
 	  
+	  int maxontime = 600000; // in millis, ten minutes
+	  int neededofftime = 180000; // in millis, three minutes
+	  
 	  int ontime = 0;
-	  int offtime = 0;
+	  int offtime = -neededofftime;
 
 	  Unit(Location location, UnitControlSystem parent) {
 		p = parent;
@@ -76,8 +79,29 @@ public class Unit {
 		  p.println("Solenoid state not updated.");
 	  }
 	  
+	  void turnOnBlower() {
+		  blowerInstr = true;
+	  }
+	  
+	  void turnOffBlower() {
+		  blowerInstr = false;
+	  }
+	  
+	  void turnOnWhistle(int i) {
+		  solenoidInstr[i] = false;
+	  }
+	  
+	  void turnOffWhistle(int i) {
+		  solenoidInstr[i] = true;
+	  }
+	  
 	  void updateBlower() {
 		  blowerState = blowerInstr;
+		  if(blowerState) {
+			  ontime = p.millis();
+		  } else {
+			 offtime = p.millis();
+		  }
 		  p.println("Blower state update successfull");
 		  //p.midi.sendDimmer(this); // TODO: Fix such that it matches dimmer.
 	  }
@@ -85,5 +109,21 @@ public class Unit {
 	  void clearBlowerInstructions() {
 		  blowerInstr = blowerState;
 		  p.println("Blower state not updated.");
+	  }
+	  
+	  boolean blowerDidItsOfftime() {
+		  if(p.millis() - offtime > neededofftime ) {
+			  return true;
+		  } else {
+			  return false;
+		  }
+	  }
+	  
+	  boolean blowerOnTooLong() {
+		  if(p.millis() - ontime < maxontime ) {
+			  return false;
+		  } else {
+			  return true;
+		  }
 	  }
 }

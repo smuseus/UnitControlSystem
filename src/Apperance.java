@@ -52,6 +52,15 @@ public class Apperance {
 	    // ID
 	    p.text(u.id, screen.x, screen.y);
 	    
+	    // ON/OFF TIME
+	    if(u.blowerState) {
+	    	p.text("on time: " + p.nf(((p.millis() - u.ontime) / 60000)%60, 2) +  "." + p.nf((p.millis() - u.ontime) / 1000.0f, 2, 2 ) , 
+	    		    screen.x + 70, screen.y + 70);
+	    } else {
+	    	p.text("off time: " + p.nf(((p.millis() - u.offtime) / 60000)%60, 2) +  "." + p.nf((p.millis() - u.ontime) / 1000.0f, 2, 2 ) , 
+	    		    screen.x + 70, screen.y + 70);
+	    }
+	    
 	    // XbeeAdress64 and midi channel under user.draw();
 
 	    // Key Set
