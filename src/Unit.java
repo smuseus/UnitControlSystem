@@ -16,8 +16,11 @@ public class Unit {
 
 	  boolean[] solenoidState = { true, true, true, true, true }; // (State is reversed, false is on, true is off, due to reversed array on Arduino).
 	  boolean[] solenoidInstr = { true, true, true, true, true };
-	  boolean dimmerState = false;
-	  boolean dimmerInstr = false;
+	  boolean blowerState = false;
+	  boolean blowerInstr = false;
+	  
+	  int ontime = 0;
+	  int offtime = 0;
 
 	  Unit(Location location, UnitControlSystem parent) {
 		p = parent;
@@ -32,4 +35,55 @@ public class Unit {
 	  void draw() {
 	    apperance.draw();
 	  }	  
+	  
+	  boolean solenoidNeedsToBeUpdated(int i) {
+		  if(solenoidState[i] != solenoidInstr[i]) {
+			  return true;
+		  } else {
+			  return false;
+		  }
+	  }
+	  
+	  boolean blowerNeedsToBeUpdated() {
+		  if(blowerState != blowerInstr) {
+			  return true;
+		  } else {
+			  return false;
+		  }
+	  }
+	  
+	  boolean solenoidsAreClosed() {
+		  for(int i=0; i < solenoidState.length; i++) {
+			  if(!solenoidState[i]) return false;
+		  }
+		  return true;
+	  }
+	  
+	  void closeAllSolenoids() {
+		  for(int i=0; i < solenoidInstr.length; i++) { 
+			  solenoidInstr[i] = true;
+		  }
+	  }
+	  
+	  void updateSolenoid(int i) {
+		  solenoidState[i] = solenoidInstr[i];
+		  p.println("Solenoid #" + i+ " state update successfull");
+		  //p.midi.sendSolenoid(this, i);
+	  }
+	  
+	  void clearSolenoidInstructions(int i) {
+		  solenoidInstr[i] = solenoidState[i];  
+		  p.println("Solenoid state not updated.");
+	  }
+	  
+	  void updateBlower() {
+		  blowerState = blowerInstr;
+		  p.println("Blower state update successfull");
+		  //p.midi.sendDimmer(this); // TODO: Fix such that it matches dimmer.
+	  }
+	  
+	  void clearBlowerInstructions() {
+		  blowerInstr = blowerState;
+		  p.println("Blower state not updated.");
+	  }
 }

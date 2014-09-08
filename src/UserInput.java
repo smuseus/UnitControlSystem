@@ -173,7 +173,7 @@ public class UserInput {
 					u.solenoidInstr[i] = !u.solenoidInstr[i]; 
 				} else 
 				if (p.key == u.keySet[5]) {
-					u.dimmerInstr = !u.dimmerInstr;
+					u.blowerInstr = !u.blowerInstr;
 				}
 			}
 		}

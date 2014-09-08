@@ -26,7 +26,7 @@ public class Apperance {
 	    if(!u.solenoidState[4]) whistleField(4);
 
 	    // Active Blower
-	    if(u.dimmerState) {
+	    if(u.blowerState) {
 	    	p.fill(255, 120); p.noStroke();
 	    	p.ellipse(screen.x, screen.y, 45, 45);
 	    }

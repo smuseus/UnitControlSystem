@@ -35,10 +35,10 @@ public class UnitControlSystem extends PApplet {
 		map = new UnfoldingMap(this, new Microsoft.AerialProvider());
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
-		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
+		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
 		midibus = new MidiBus(this, "Abelton", "Eclipse");
-		midi = new MidiIO(this, midibus);
+		//midi = new MidiIO(this, midibus);
 	}
 
 	public void draw() {

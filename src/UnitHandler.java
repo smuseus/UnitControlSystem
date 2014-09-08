@@ -42,35 +42,28 @@ public class UnitHandler {
 	  void sync() {
 		  for(Unit u : units) {
 			  for(int i=0; i<u.solenoidState.length; i++) {
-				  if(u.solenoidState[i] != u.solenoidInstr[i]) {
-					  if(p.comm.send(u.address, p.comm.updown(i, u.solenoidInstr[i]))) {
-						  u.solenoidState[i] = u.solenoidInstr[i];
-						  p.println("Solenoid #" + i+ " state update successfull");
-						  p.midi.sendSolenoid(u, i);
+				  if(u.solenoidNeedsToBeUpdated(i)) {
+					  if(true) { // TODO: switch back
+//					  if(p.comm.send(u.address, p.comm.updown(i, u.solenoidInstr[i]))) {
+						  u.updateSolenoid(i);
 					  } else {
-						  u.solenoidInstr[i] = !u.solenoidInstr[i];
-						  p.println("Solenoid state not updated.");
+						  u.clearSolenoidInstructions(i);
 					  }
 				  }
-				  if(u.dimmerState != u.dimmerInstr) {
-					  if(p.comm.send(u.address, p.comm.dimm(u.dimmerInstr))) {
-						  u.dimmerState = u.dimmerInstr;
-						  p.println("Dimmer state update successfull");
-						  p.midi.sendDimmer(u); // TODO: Fix such that it matches dimmer.
+				  if(u.blowerNeedsToBeUpdated()) {
+					  if(u.solenoidsAreClosed()) {
+						  if(true) { // TODO: switch back
+	//					  if(p.comm.send(u.address, p.comm.dimm(u.dimmerInstr))) {
+							  u.updateBlower();
+						  } else {
+							  u.clearBlowerInstructions();
+						  }
 					  } else {
-						  //u.dimmerInstr = !u.dimmerInstr; // TODO: Fix this with working unit.
-						  p.println("Dimmer state not updated.");
+						  u.closeAllSolenoids();
 					  }
 				  }
 			  }
 		  }
 	  }
-	  
-	  void solenoidDebug() {
-		  for(Unit u : units) {
-			  if(u.id.equals("R22")) {
-				  u.dimmerInstr = !u.dimmerInstr;
-			  }
-		  }
-	  }
+
 }
