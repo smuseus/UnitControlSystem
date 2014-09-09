@@ -1,3 +1,5 @@
+import processing.core.PVector;
+
 import com.rapplogic.xbee.api.XBeeAddress64;
 
 import de.fhpotsdam.unfolding.geo.*;
@@ -8,7 +10,7 @@ public class Unit {
 	  
 	  String id;
 	  XBeeAddress64 address;
-	  Location gps;
+	  PVector location;
 	  float orientation;
 	  
 	  char[] keySet = {'2','3','e','w','q','0'};
@@ -25,13 +27,13 @@ public class Unit {
 	  int ontime = 0;
 	  int offtime = -neededofftime;
 
-	  Unit(Location location, UnitControlSystem parent) {
+	  Unit(PVector location, UnitControlSystem parent) {
 		p = parent;
 		apperance = new Apperance(this, p);
 		
 	    id = "Default"; 
 	    address = new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x9e, 0xec, 0xcd);
-	    gps = location;
+	    this.location = location;
 	    orientation = 0; // Offset form north in radiants. minus to left, plus to right.      
 	  }
 	  

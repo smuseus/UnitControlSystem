@@ -1,12 +1,13 @@
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.core.PVector;
 import de.fhpotsdam.unfolding.utils.ScreenPosition;
 
 public class Apperance {
 	  UnitControlSystem p;
 	
 	  Unit u;
-	  ScreenPosition screen;
+	  PVector screen;
 	  PImage soundfield;
 	  
 	  Apperance(Unit u, UnitControlSystem parent) {
@@ -16,7 +17,7 @@ public class Apperance {
 	  }  
 	  
 	  void draw() {
-	    screen = p.map.getScreenPosition(u.gps);
+	    screen = p.map.getScreenPosition(u.location);
 	        
 	    // Active Whistle (State is reversed, false is on, true is off, due to reversed array on Arduino). 
 	    if(!u.solenoidState[0]) whistleField(0);
@@ -54,10 +55,10 @@ public class Apperance {
 	    // ON/OFF TIME
 	    if(u.blowerState) {
 	    	p.text("on time: " + p.nf(((p.millis() - u.ontime) / 60000)%60, 2) +  "." + p.nf((p.millis() - u.ontime) / 1000.0f, 2, 2 ) , 
-	    		    screen.x + 70, screen.y + 70);
+	    		    screen.x + 70, screen.y + 50);
 	    } else {
 	    	p.text("off time: " + p.nf(((p.millis() - u.offtime) / 60000)%60, 2) +  "." + p.nf((p.millis() - u.ontime) / 1000.0f, 2, 2 ) , 
-	    		    screen.x + 70, screen.y + 70);
+	    		    screen.x + 70, screen.y + 50);
 	    }
 	    
 	    // XbeeAdress64 and midi channel under user.draw();

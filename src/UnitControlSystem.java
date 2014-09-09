@@ -13,14 +13,10 @@ import javax.sound.midi.MidiMessage;
 
 import processing.core.*;
 import themidibus.*;
-import de.fhpotsdam.unfolding.*;
-import de.fhpotsdam.unfolding.geo.*;
-import de.fhpotsdam.unfolding.providers.*;
-import de.fhpotsdam.unfolding.utils.MapUtils;
 
 public class UnitControlSystem extends PApplet {
 
-	public UnfoldingMap map;
+	public Map map;
 	public UnitHandler handler;
 	public UserInput user;
 	public Comm comm;
@@ -33,7 +29,7 @@ public class UnitControlSystem extends PApplet {
 
 	public void setup() {
 		size(600, 1024);
-		map = new UnfoldingMap(this, new Microsoft.AerialProvider());
+		map = new Map(this);
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
 		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.

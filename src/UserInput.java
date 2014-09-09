@@ -1,4 +1,5 @@
 import processing.core.PConstants;
+import processing.core.PVector;
 import de.fhpotsdam.unfolding.events.*;
 import de.fhpotsdam.unfolding.interactions.MouseHandler;
 import de.fhpotsdam.unfolding.utils.*;
@@ -19,7 +20,6 @@ public class UserInput {
 
 	UserInput(UnitControlSystem parent) {
 		p = parent;
-		mapInit(p);
 	}
 
 	void mousePressed() {
@@ -30,7 +30,11 @@ public class UserInput {
 		if (mode.equals("UORIENT"))
 			selectedUnit.orientation += (p.mouseX - p.pmouseX) * 0.01;
 		if (mode.equals("UMOVE"))
-			selectedUnit.gps = p.map.getLocation(p.mouseX, p.mouseY);
+			selectedUnit.location = p.map.getLocation(p.mouseX, p.mouseY);
+		if (mode.equals("MAP")) {
+			p.map.position.x += p.pmouseX - p.mouseX;
+			p.map.position.y += p.pmouseY - p.mouseY;
+		}
 	}
 
 	void mouseReleased() {
@@ -63,6 +67,8 @@ public class UserInput {
 					p.handler.clear();
 				} else if (p.key == 'r') {
 					p.program.setup();
+				} else if (p.key == 'R') {
+					p.program.run = false;
 				}else {
 					mode = "USER";
 				}
@@ -118,17 +124,17 @@ public class UserInput {
 
 		// Post Processes
 		if (mode.equals("MAP")) {
-			mapActive(true);
+			p.map.activateMap();
 		} else {
-			mapActive(false);
+			p.map.deactivateMap();
 		}
 	}
 
 	Unit checkUnits() {
-		ScreenPosition screen;
+		PVector screen;
 		float hitRadius = 50;
 		for (Unit u : p.handler.units) {
-			screen = p.map.getScreenPosition(u.gps);
+			screen = p.map.getScreenPosition(u.location);
 			if (p.dist(p.mouseX, p.mouseY, screen.x, screen.y) < hitRadius)
 				return u;
 		}
@@ -136,7 +142,7 @@ public class UserInput {
 	}
 
 	void checkUnitComponent(Unit u) {
-		ScreenPosition screen = p.map.getScreenPosition(u.gps);
+		PVector screen = p.map.getScreenPosition(u.location);
 		if (p.dist(p.mouseX, p.mouseY,
 				screen.x + p.pentatip(0, 30, u.orientation).x,
 				screen.y + p.pentatip(0, 30, u.orientation).y) < 20) {
@@ -178,22 +184,6 @@ public class UserInput {
 					u.blowerInstr = !u.blowerInstr;
 				}
 			}
-		}
-	}
-
-	void mapInit(UnitControlSystem p) {
-		mapEvent = new EventDispatcher();
-		MouseHandler mouseHandler = new MouseHandler(p, p.map);
-		mapEvent.addBroadcaster(mouseHandler);
-		mapActive(true);
-	}
-
-	void mapActive(boolean b) {
-		if (b) {
-			mapEvent.register(p.map, PanMapEvent.TYPE_PAN, p.map.getId());
-		} else {
-			mapEvent.unregister(p.map, PanMapEvent.TYPE_PAN, p.map.getId());
-			mapEvent.unregister(p.map, ZoomMapEvent.TYPE_ZOOM, p.map.getId()); // TODO: Make this happen eariler.
 		}
 	}
 

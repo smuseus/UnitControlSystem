@@ -1,5 +1,6 @@
 
 import de.fhpotsdam.unfolding.geo.Location;
+import processing.core.PVector;
 import processing.data.*;
 
 public class FileHandler {
@@ -20,9 +21,8 @@ public class FileHandler {
 			p.handler.addUnit( JSONtoUnit(units.getJSONObject(i)) );
 		}
 		
-		// Load Map location
-		p.map.zoomAndPanTo(15, new Location(json.getFloat("centerlat"), json.getFloat("centerlon")));
-		
+		// Load map image
+		p.map.loadMap(json.getString("mapImage"));
 	}
 	
 	public void save() {
@@ -35,9 +35,9 @@ public class FileHandler {
 		}
 		json.setJSONArray("units", units);
 		
-		// Save Map Location
-		json.setFloat("centerlon", p.map.getCenter().y);
-		json.setFloat("centerlat", p.map.getCenter().x);
+		// Save file path of map image
+		json.setString("mapImage", p.map.filepath);
+		
 		
 		p.saveJSONObject(json, filepath);
 		p.println("Scene saved to: " + filepath);
@@ -45,11 +45,11 @@ public class FileHandler {
 
 	private Unit JSONtoUnit(JSONObject json) {
 		
-		// Load gps
-		Location gps = new Location(json.getFloat("lat"), json.getFloat("lon"));
+		// Load location
+		PVector loc = new PVector(json.getFloat("x"), json.getFloat("y"));
 		
 		// Initialize Unit
-		Unit u = new Unit(gps, p);
+		Unit u = new Unit(loc, p);
 		
 		// Load id
 		u.id = json.getString("id");
@@ -89,9 +89,9 @@ public class FileHandler {
 		}
 		json.setString("address", p.join(addrsString, ", "));
 		
-		// Store gps location
-		json.setFloat("lat", u.gps.getLat());
-		json.setFloat("lon", u.gps.getLon());
+		// Store location
+		json.setFloat("x", u.location.x);
+		json.setFloat("y", u.location.y);
 		
 		// Store orientation
 		json.setFloat("orientation", u.orientation);

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import processing.core.PVector;
+
 public class UnitHandler {
 	  UnitControlSystem p;
 	  
@@ -18,7 +20,7 @@ public class UnitHandler {
 	  }
 	  
 	  void addUnit() {
-	      units.add(new Unit(p.map.getLocation(p.mouseX,p.mouseY), p)); 
+	      units.add(new Unit(new PVector(p.mouseX, p.mouseY), p)); 
 	  }
 	  
 	  void addUnit(Unit u) {
