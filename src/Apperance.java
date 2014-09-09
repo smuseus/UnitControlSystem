@@ -31,7 +31,6 @@ public class Apperance {
 	    	p.ellipse(screen.x, screen.y, 45, 45);
 	    }
 	   
-	    
 	    // Line Pentagon.
 	    p.stroke(255); p.strokeWeight(2);
 	    for(int i=0; i < 5; i++) {

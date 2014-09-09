@@ -25,6 +25,7 @@ public class UnitControlSystem extends PApplet {
 	public UserInput user;
 	public Comm comm;
 	public FileHandler file;
+	public ProgramStochastic program;
 	public MidiIO midi;
 	public MidiBus midibus;
 	
@@ -37,11 +38,13 @@ public class UnitControlSystem extends PApplet {
 		user = new UserInput(this);
 		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
+		program = new ProgramStochastic(this);
 		midibus = new MidiBus(this, "Abelton", "Eclipse");
 		//midi = new MidiIO(this, midibus);
 	}
 
 	public void draw() {
+		program.run();
 		handler.sync(); // Wait with xbee, still needs to be debugged. 
 		map.draw();
 		handler.draw();

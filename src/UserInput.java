@@ -61,7 +61,9 @@ public class UserInput {
 					p.file.load();
 				} else if (p.key == 'c') {
 					p.handler.clear();
-				} else {
+				} else if (p.key == 'r') {
+					p.program.setup();
+				}else {
 					mode = "USER";
 				}
 			} else {
@@ -212,8 +214,7 @@ public class UserInput {
 			p.ellipse(selectedUnit.apperance.screen.x,
 					  selectedUnit.apperance.screen.y, 100, 100);
 			p.textAlign(p.CENTER, p.CENTER);
-	    	p.text(selectedUnit.address.toString(), selectedUnit.apperance.screen.x, selectedUnit.apperance.screen.y+70);
-	    	p.text("Midi: ", selectedUnit.apperance.screen.x, selectedUnit.apperance.screen.y+90);
+//	    	p.text("Midi: ", selectedUnit.apperance.screen.x, selectedUnit.apperance.screen.y+90);
 		}
 	}
 }

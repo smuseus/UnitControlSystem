@@ -95,6 +95,10 @@ public class Unit {
 		  solenoidInstr[i] = true;
 	  }
 	  
+	  void toggleWhistle(int i) {
+		  solenoidInstr[i] = !solenoidInstr[i];
+	  }
+	  
 	  void updateBlower() {
 		  blowerState = blowerInstr;
 		  if(blowerState) {
