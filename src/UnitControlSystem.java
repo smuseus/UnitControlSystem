@@ -35,7 +35,7 @@ public class UnitControlSystem extends PApplet {
 		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
 		program = new ProgramStochastic(this);
-		midibus = new MidiBus(this, "Abelton", "Eclipse");
+		//midibus = new MidiBus(this, "Abelton", "Eclipse");
 		//midi = new MidiIO(this, midibus);
 	}
 

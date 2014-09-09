@@ -192,14 +192,17 @@ public class UserInput {
 	void draw() {
 		p.textAlign(PConstants.LEFT, PConstants.TOP);
 		if (mode.equals("ALT")) {
-			p.fill(0); p.noStroke();
+			p.fill(0, 200); p.noStroke();
 			p.rect(0,0, 200, p.height - 25 ); p.fill(255);
 			p.text("COMMANDS\n\n a (add)\n d (delete)\n s (save)\n l (load)\n c (clear)\n e (shutdown)\n \n\n r (run program)\n R (stop program) ", 10, 10);
 		}
-		p.noStroke(); p.fill(0);
+		p.fill(0, 200); p.noStroke(); 
 		p.rect(0,p.height-30,p.width,p.height);
 		p.fill(255);
 		p.text("MODE: " + mode, 10, p.height-25);
+		if(p.program.run) {
+			p.text("PROGRAM RUNNING", p.width - 150, p.height-25);
+		}
 		if (selectedUnit != null) {
 			p.ellipseMode(p.CENTER);
 			p.noFill();

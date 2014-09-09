@@ -26,6 +26,7 @@ public class ProgramStochastic {
 	void setup() {
 		generateRandomUnitSequence();
 		run = true;
+		p.println("Stochastic Program Started");
 	}
 	
 	void run() {
@@ -50,6 +51,7 @@ public class ProgramStochastic {
 		run = false;
 		unitsON.clear();
 		unitsOFF.clear();
+		p.println("Stochastic Program Stopped");
 	}
 	
 	boolean probabilityBasedEvent() {
