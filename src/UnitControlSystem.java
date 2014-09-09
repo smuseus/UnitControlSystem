@@ -28,7 +28,7 @@ public class UnitControlSystem extends PApplet {
 	public boolean ONLINE_MAP = false;
 
 	public void setup() {
-		size(600, 1024);
+		size(800, 1024);
 		map = new Map(this);
 		handler = new UnitHandler(this);
 		user = new UserInput(this);

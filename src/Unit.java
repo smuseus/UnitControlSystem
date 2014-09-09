@@ -23,6 +23,7 @@ public class Unit {
 	  
 	  int maxontime = 600000; // in millis, ten minutes
 	  int neededofftime = 180000; // in millis, three minutes
+	  boolean safetyTimers = false; // turn off safety
 	  
 	  int ontime = 0;
 	  int offtime = -neededofftime;
@@ -72,7 +73,7 @@ public class Unit {
 	  
 	  void updateSolenoid(int i) {
 		  solenoidState[i] = solenoidInstr[i];
-		  p.println("Solenoid #" + i+ " state update successfull");
+		  p.println(id + ": Solenoid #" + i+ " state update successfull");
 		  //p.midi.sendSolenoid(this, i);
 	  }
 	  
@@ -108,7 +109,7 @@ public class Unit {
 		  } else {
 			 offtime = p.millis();
 		  }
-		  p.println("Blower state update successfull");
+		  p.println(id + ": Blower state update successfull");
 		  //p.midi.sendDimmer(this); // TODO: Fix such that it matches dimmer.
 	  }
 	  
@@ -118,18 +119,26 @@ public class Unit {
 	  }
 	  
 	  boolean blowerDidItsOfftime() {
-		  if(p.millis() - offtime > neededofftime ) {
-			  return true;
+		  if(safetyTimers) {
+			  if(p.millis() - offtime > neededofftime ) {
+				  return true;
+			  } else {
+				  return false;
+			  }
 		  } else {
-			  return false;
+			  return true;
 		  }
 	  }
 	  
 	  boolean blowerOnTooLong() {
-		  if(p.millis() - ontime < maxontime ) {
-			  return false;
+		  if(safetyTimers) {
+			  if(p.millis() - ontime < maxontime ) {
+				  return false;
+			  } else {
+				  return true;
+			  }
 		  } else {
-			  return true;
+			  return false;
 		  }
 	  }
 }

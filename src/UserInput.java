@@ -52,13 +52,13 @@ public class UserInput {
 				} else if (p.key == 'd') {
 					p.handler.removeUnit(selectedUnit);
 					selectedUnit = null;
-				} else if (p.key == 'i') {
-					if (selectedUnit != null) {
-						selectedUnit.id = "";
-						mode = "UID";
-					}
-				} else if (p.key == 'm') {
-					mode = "MIDI";
+//				} else if (p.key == 'i') {
+//					if (selectedUnit != null) {
+//						selectedUnit.id = "";
+//						mode = "UID";
+//					}
+//				} else if (p.key == 'm') {
+//					mode = "MIDI";
 				} else if (p.key == 's') {
 					p.file.save();
 				} else if (p.key == 'l') {
@@ -68,7 +68,9 @@ public class UserInput {
 				} else if (p.key == 'r') {
 					p.program.setup();
 				} else if (p.key == 'R') {
-					p.program.run = false;
+					p.program.stop();
+				} else if (p.key == 'e') {
+					p.handler.emergencyShutdown();
 				}else {
 					mode = "USER";
 				}
@@ -190,7 +192,9 @@ public class UserInput {
 	void draw() {
 		p.textAlign(PConstants.LEFT, PConstants.TOP);
 		if (mode.equals("ALT")) {
-			p.text("a (add), d (delete), i (set id), m (set midi), s (save), l (load), c (clear)", 10, 10);
+			p.fill(0); p.noStroke();
+			p.rect(0,0, 200, p.height - 25 ); p.fill(255);
+			p.text("COMMANDS\n\n a (add)\n d (delete)\n s (save)\n l (load)\n c (clear)\n e (shutdown)\n \n\n r (run program)\n R (stop program) ", 10, 10);
 		}
 		p.noStroke(); p.fill(0);
 		p.rect(0,p.height-30,p.width,p.height);

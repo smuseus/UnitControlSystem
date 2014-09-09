@@ -46,6 +46,12 @@ public class ProgramStochastic {
 		}
 	}
 	
+	void stop() {
+		run = false;
+		unitsON.clear();
+		unitsOFF.clear();
+	}
+	
 	boolean probabilityBasedEvent() {
 		if(p.random(0,1) < solenoidChangeHz / (float) ( framerate * unitsON.size() * 5 )) {
 			return true;

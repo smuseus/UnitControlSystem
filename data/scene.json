@@ -2,7 +2,7 @@
   "mapImage": "../data/helsinki_docks.png",
   "units": [
     {
-      "id": "R00",
+      "id": "U00",
       "orientation": 5.600001335144043,
       "address": "0, 13, a2, 0, 40, 99, f0, ee",
       "keySet": [
@@ -18,7 +18,7 @@
       "x": 686
     },
     {
-      "id": "R11",
+      "id": "U11",
       "orientation": 4.330000877380371,
       "address": "0, 13, a2, 0, 40, 99, 5c, 2",
       "keySet": [
@@ -34,7 +34,7 @@
       "x": 413
     },
     {
-      "id": "R22",
+      "id": "U22",
       "orientation": 2.6300036907196045,
       "address": "0, 13, a2, 0, 40, 9e, ec, d3",
       "keySet": [
@@ -50,7 +50,7 @@
       "x": 481
     },
     {
-      "id": "R44",
+      "id": "U44",
       "orientation": 3.3999993801116943,
       "address": "0, 13, a2, 0, 40, 9e, ec, 92",
       "keySet": [
