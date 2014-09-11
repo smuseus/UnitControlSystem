@@ -76,7 +76,7 @@ public class UnitHandler {
 	  
 	  void emergencyShutdown() {
 		  for(Unit u : units) {
-			  // TODO: Switch back			  p.comm.send(u, p.comm.dimm(false));
+			  p.comm.send(u.address, p.comm.dimm(false));
 		  }
 	  }
 }
