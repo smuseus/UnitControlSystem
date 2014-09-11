@@ -45,8 +45,7 @@ public class UnitHandler {
 		  for(Unit u : units) {
 			  for(int i=0; i<u.solenoidState.length; i++) {
 				  if(u.solenoidNeedsToBeUpdated(i)) {
-					  if(true) { // TODO: switch back
-//					  if(p.comm.send(u.address, p.comm.updown(i, u.solenoidInstr[i]))) {
+					  if(p.comm.send(u.address, p.comm.updown(i, u.solenoidInstr[i]))) {
 						  u.updateSolenoid(i);
 					  } else {
 						  u.clearSolenoidInstructions(i);
@@ -56,8 +55,7 @@ public class UnitHandler {
 			  if(u.blowerNeedsToBeUpdated()) {
 				  if(u.solenoidsAreClosed()) {
 					  if(u.blowerDidItsOfftime()) {
-						  if(true) { // TODO: switch back
-	//					  if(p.comm.send(u.address, p.comm.dimm(u.dimmerInstr))) {
+						  if(p.comm.send(u.address, p.comm.dimm(u.blowerInstr))) {
 							  u.updateBlower();
 						  } else {
 							  u.clearBlowerInstructions();
@@ -78,7 +76,7 @@ public class UnitHandler {
 	  
 	  void emergencyShutdown() {
 		  for(Unit u : units) {
-// TODO: Switch back			  p.comm.send(u, p.comm.dimm(false));
+			  // TODO: Switch back			  p.comm.send(u, p.comm.dimm(false));
 		  }
 	  }
 }

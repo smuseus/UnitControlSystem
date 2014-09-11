@@ -12,10 +12,11 @@ public class Comm {
 	UnitControlSystem p;
 
 	String COMPORT = "/dev/tty.usbserial-AD02AHVC";
+	// String COMPORT = "/dev/ttyUSB0";//  NOKIA USB
 
 	XBee xbee = new XBee();
 
-	// Keep for backup.
+	// Keep for backup
 	XBeeAddress64[] addrs = {
 			new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x9e, 0xec, 0xcd),
 			new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x9e, 0xec, 0xc8), };

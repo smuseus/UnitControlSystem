@@ -32,7 +32,7 @@ public class UnitControlSystem extends PApplet {
 		map = new Map(this);
 		handler = new UnitHandler(this);
 		user = new UserInput(this);
-		//comm = new Comm(this); // Wait with xbee, still needs to be debugged.
+		comm = new Comm(this); // Wait with xbee, still needs to be debugged.
 		file = new FileHandler(this);
 		program = new ProgramStochastic(this);
 		//midibus = new MidiBus(this, "Abelton", "Eclipse");
